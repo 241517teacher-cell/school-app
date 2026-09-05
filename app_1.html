@@ -78,71 +78,71 @@
         </div>
 
         <!-- ===== 画面 1: 本人確認画面 ===== -->
-        <div id="view-auth" class="view-panel hidden max-w-lg mx-auto w-full bg-white p-6 sm:p-8 rounded-2xl shadow-lg border border-slate-100">
-            <div class="text-center mb-4">
-                <span id="auth-mode-badge" class="px-3 py-1 rounded-full text-xs font-bold bg-emerald-100 text-emerald-700">
+        <div id="view-auth" class="view-panel hidden max-w-lg mx-auto w-full bg-white p-4 sm:p-6 rounded-2xl shadow-lg border border-slate-100 space-y-3">
+            <div class="text-center mb-1">
+                <span id="auth-mode-badge" class="px-3 py-0.5 rounded-full text-xs font-bold bg-emerald-100 text-emerald-700">
                     貸出モード
                 </span>
-                <h2 class="text-2xl font-bold text-slate-800 mt-2">本人確認</h2>
-                <p class="text-slate-500 text-sm mt-1">学籍番号または職員番号を入力してください</p>
+                <h2 class="text-xl font-bold text-slate-800 mt-1">本人確認</h2>
+                <p class="text-slate-500 text-xs mt-0.5">学籍番号または職員番号を入力してください</p>
             </div>
 
-            <form onsubmit="handleAuthSubmit(event)" class="space-y-4">
+            <form onsubmit="handleAuthSubmit(event)" class="space-y-3">
                 <div>
-                    <label class="block text-xs font-bold text-slate-500 mb-1 text-center">番号入力欄</label>
+                    <label class="block text-[11px] font-bold text-slate-500 mb-1 text-center">番号入力欄</label>
                     <div class="relative">
                         <input type="text" id="user-id-input" placeholder="" required oninput="resetUserCard()"
-                            class="w-full text-center text-2xl tracking-widest font-mono p-3 border-2 border-slate-300 rounded-xl focus:border-indigo-600 focus:outline-none uppercase">
-                        <button type="button" onclick="clearUserInput()" class="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 p-2">
-                            <i class="fa-solid fa-circle-xmark text-xl"></i>
+                            class="w-full text-center text-xl tracking-widest font-mono p-2.5 border-2 border-slate-300 rounded-xl focus:border-indigo-600 focus:outline-none uppercase">
+                        <button type="button" onclick="clearUserInput()" class="absolute right-2.5 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 p-1">
+                            <i class="fa-solid fa-circle-xmark text-lg"></i>
                         </button>
                     </div>
                 </div>
 
-                <!-- 画面入力用テンキー (数字＋照会のみ) -->
-                <div class="bg-slate-50 p-3 rounded-2xl border border-slate-200">
-                    <div class="grid grid-cols-3 gap-2 max-w-xs mx-auto">
+                <!-- 画面入力用テンキー (数字＋照会のみ・サイズ最適化) -->
+                <div class="bg-slate-50 p-2.5 rounded-xl border border-slate-200">
+                    <div class="grid grid-cols-3 gap-1.5 max-w-xs mx-auto">
                         <!-- 数字 1-9 -->
-                        <button type="button" onclick="appendKey('1')" class="bg-white hover:bg-slate-100 text-slate-800 font-bold p-3 rounded-xl text-xl shadow-sm border border-slate-200 active:scale-95 transition">1</button>
-                        <button type="button" onclick="appendKey('2')" class="bg-white hover:bg-slate-100 text-slate-800 font-bold p-3 rounded-xl text-xl shadow-sm border border-slate-200 active:scale-95 transition">2</button>
-                        <button type="button" onclick="appendKey('3')" class="bg-white hover:bg-slate-100 text-slate-800 font-bold p-3 rounded-xl text-xl shadow-sm border border-slate-200 active:scale-95 transition">3</button>
+                        <button type="button" onclick="appendKey('1')" class="bg-white hover:bg-slate-100 text-slate-800 font-bold py-2 rounded-lg text-lg shadow-sm border border-slate-200 active:scale-95 transition">1</button>
+                        <button type="button" onclick="appendKey('2')" class="bg-white hover:bg-slate-100 text-slate-800 font-bold py-2 rounded-lg text-lg shadow-sm border border-slate-200 active:scale-95 transition">2</button>
+                        <button type="button" onclick="appendKey('3')" class="bg-white hover:bg-slate-100 text-slate-800 font-bold py-2 rounded-lg text-lg shadow-sm border border-slate-200 active:scale-95 transition">3</button>
 
-                        <button type="button" onclick="appendKey('4')" class="bg-white hover:bg-slate-100 text-slate-800 font-bold p-3 rounded-xl text-xl shadow-sm border border-slate-200 active:scale-95 transition">4</button>
-                        <button type="button" onclick="appendKey('5')" class="bg-white hover:bg-slate-100 text-slate-800 font-bold p-3 rounded-xl text-xl shadow-sm border border-slate-200 active:scale-95 transition">5</button>
-                        <button type="button" onclick="appendKey('6')" class="bg-white hover:bg-slate-100 text-slate-800 font-bold p-3 rounded-xl text-xl shadow-sm border border-slate-200 active:scale-95 transition">6</button>
+                        <button type="button" onclick="appendKey('4')" class="bg-white hover:bg-slate-100 text-slate-800 font-bold py-2 rounded-lg text-lg shadow-sm border border-slate-200 active:scale-95 transition">4</button>
+                        <button type="button" onclick="appendKey('5')" class="bg-white hover:bg-slate-100 text-slate-800 font-bold py-2 rounded-lg text-lg shadow-sm border border-slate-200 active:scale-95 transition">5</button>
+                        <button type="button" onclick="appendKey('6')" class="bg-white hover:bg-slate-100 text-slate-800 font-bold py-2 rounded-lg text-lg shadow-sm border border-slate-200 active:scale-95 transition">6</button>
 
-                        <button type="button" onclick="appendKey('7')" class="bg-white hover:bg-slate-100 text-slate-800 font-bold p-3 rounded-xl text-xl shadow-sm border border-slate-200 active:scale-95 transition">7</button>
-                        <button type="button" onclick="appendKey('8')" class="bg-white hover:bg-slate-100 text-slate-800 font-bold p-3 rounded-xl text-xl shadow-sm border border-slate-200 active:scale-95 transition">8</button>
-                        <button type="button" onclick="appendKey('9')" class="bg-white hover:bg-slate-100 text-slate-800 font-bold p-3 rounded-xl text-xl shadow-sm border border-slate-200 active:scale-95 transition">9</button>
+                        <button type="button" onclick="appendKey('7')" class="bg-white hover:bg-slate-100 text-slate-800 font-bold py-2 rounded-lg text-lg shadow-sm border border-slate-200 active:scale-95 transition">7</button>
+                        <button type="button" onclick="appendKey('8')" class="bg-white hover:bg-slate-100 text-slate-800 font-bold py-2 rounded-lg text-lg shadow-sm border border-slate-200 active:scale-95 transition">8</button>
+                        <button type="button" onclick="appendKey('9')" class="bg-white hover:bg-slate-100 text-slate-800 font-bold py-2 rounded-lg text-lg shadow-sm border border-slate-200 active:scale-95 transition">9</button>
 
                         <!-- 0, 照会 -->
-                        <button type="button" onclick="appendKey('0')" class="col-span-2 bg-white hover:bg-slate-100 text-slate-800 font-bold p-3 rounded-xl text-xl shadow-sm border border-slate-200 active:scale-95 transition">0</button>
-                        <button type="submit" class="col-span-1 bg-indigo-600 hover:bg-indigo-500 text-white font-bold p-3 rounded-xl text-sm shadow-sm active:scale-95 transition flex items-center justify-center">
+                        <button type="button" onclick="appendKey('0')" class="col-span-2 bg-white hover:bg-slate-100 text-slate-800 font-bold py-2 rounded-lg text-lg shadow-sm border border-slate-200 active:scale-95 transition">0</button>
+                        <button type="submit" class="col-span-1 bg-indigo-600 hover:bg-indigo-500 text-white font-bold py-2 rounded-lg text-xs shadow-sm active:scale-95 transition flex items-center justify-center">
                             照会
                         </button>
                     </div>
                 </div>
 
-                <div id="user-info-card" class="hidden bg-indigo-50 border border-indigo-200 rounded-xl p-4 text-center space-y-1">
-                    <p class="text-xs text-indigo-600 font-semibold">確認されたユーザー</p>
-                    <p id="user-name-display" class="text-2xl font-bold text-indigo-950"></p>
-                    <div id="user-role-display" class="text-xs text-indigo-600 font-medium pt-1"></div>
+                <div id="user-info-card" class="hidden bg-indigo-50 border border-indigo-200 rounded-xl p-2.5 text-center space-y-0.5">
+                    <p class="text-[11px] text-indigo-600 font-semibold">確認されたユーザー</p>
+                    <p id="user-name-display" class="text-xl font-bold text-indigo-950"></p>
+                    <div id="user-role-display" class="text-xs text-indigo-600 font-medium"></div>
                 </div>
 
-                <div id="user-auth-error" class="hidden bg-rose-50 text-rose-600 p-3 rounded-lg text-sm text-center font-medium">
+                <div id="user-auth-error" class="hidden bg-rose-50 text-rose-600 p-2 rounded-lg text-xs text-center font-medium">
                     <i class="fa-solid fa-triangle-exclamation mr-1"></i> 該当する番号が見つかりません。
                 </div>
 
-                <div class="pt-2 flex space-x-3">
-                    <button type="button" onclick="goHome()" class="w-1/3 bg-slate-200 hover:bg-slate-300 text-slate-700 font-bold py-3.5 rounded-xl transition">
+                <div class="pt-1 flex space-x-2">
+                    <button type="button" onclick="goHome()" class="w-1/3 bg-slate-200 hover:bg-slate-300 text-slate-700 font-bold py-2.5 rounded-xl text-sm transition">
                         戻る
                     </button>
-                    <button type="submit" id="auth-check-btn" class="w-2/3 bg-indigo-600 hover:bg-indigo-500 text-white font-bold py-3.5 rounded-xl transition shadow-md">
+                    <button type="submit" id="auth-check-btn" class="w-2/3 bg-indigo-600 hover:bg-indigo-500 text-white font-bold py-2.5 rounded-xl text-sm transition shadow-md">
                         照会する
                     </button>
-                    <button type="button" id="auth-next-btn" onclick="proceedToScan()" class="hidden w-2/3 bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-3.5 rounded-xl transition shadow-md flex items-center justify-center space-x-2">
+                    <button type="button" id="auth-next-btn" onclick="proceedToScan()" class="hidden w-2/3 bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-2.5 rounded-xl text-sm transition shadow-md flex items-center justify-center space-x-1.5">
                         <span>確認してスキャンへ進む</span>
-                        <i class="fa-solid fa-arrow-right"></i>
+                        <i class="fa-solid fa-arrow-right text-xs"></i>
                     </button>
                 </div>
             </form>
@@ -277,6 +277,7 @@
 
         const TIMEOUT_DURATION = 60;
         let remainingTime = TIMEOUT_DURATION;
+        let completeTimer = null; // 完了画面カウントダウンタイマー保持用
 
         window.onload = function() {
             fetchSheetData();
@@ -335,6 +336,12 @@
         }
 
         function goHome() {
+            // 完了画面のカウントダウンタイマーを停止
+            if (completeTimer) {
+                clearInterval(completeTimer);
+                completeTimer = null;
+            }
+
             stopScanner();
             currentMode = null;
             currentUser = null;
@@ -672,11 +679,18 @@
                 const cdSpan = document.getElementById('complete-countdown');
                 if (cdSpan) cdSpan.innerText = count;
 
-                const cdInterval = setInterval(() => {
+                // 既存のタイマーがあれば破棄
+                if (completeTimer) {
+                    clearInterval(completeTimer);
+                }
+
+                // 新しいカウントダウンタイマーを設定
+                completeTimer = setInterval(() => {
                     count--;
                     if (cdSpan) cdSpan.innerText = count;
                     if (count <= 0) {
-                        clearInterval(cdInterval);
+                        clearInterval(completeTimer);
+                        completeTimer = null;
                         goHome();
                     }
                 }, 1000);
