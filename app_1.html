@@ -340,6 +340,13 @@
             currentUser = null;
             scannedItems = [];
             clearUserInput();
+
+            // 確定ボタンのローディング状態をリセット
+            const submitBtn = document.getElementById('confirm-submit-btn');
+            const submitIcon = document.getElementById('confirm-submit-icon');
+            if (submitBtn) submitBtn.disabled = false;
+            if (submitIcon) submitIcon.className = "fa-solid fa-check text-lg";
+
             showView('view-top');
             fetchSheetData();
         }
@@ -576,9 +583,14 @@
             stopScanner();
             showView('view-confirm');
 
-            const badge = document.getElementById('confirm-type-badge');
-            const submitBtnText = document.getElementById('confirm-submit-text');
+            // 画面表示時に確定ボタンの状態を初期化（ぐるぐる状態を解除）
             const submitBtn = document.getElementById('confirm-submit-btn');
+            const submitBtnText = document.getElementById('confirm-submit-text');
+            const submitIcon = document.getElementById('confirm-submit-icon');
+            if (submitBtn) submitBtn.disabled = false;
+            if (submitIcon) submitIcon.className = "fa-solid fa-check text-lg";
+
+            const badge = document.getElementById('confirm-type-badge');
             const userLabel = document.getElementById('confirm-user-label');
 
             if (currentMode === 'borrow') {
