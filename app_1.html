@@ -71,70 +71,88 @@
         </div>
 
         <!-- ===== 画面 1: 本人確認画面 ===== -->
-        <div id="view-auth" class="view-panel hidden max-w-xl mx-auto w-full bg-white p-6 sm:p-8 rounded-3xl shadow-xl border border-slate-200 space-y-5">
-            <div class="text-center mb-2">
+        <div id="view-auth" class="view-panel hidden max-w-4xl mx-auto w-full bg-white p-5 sm:p-6 rounded-3xl shadow-xl border border-slate-200 space-y-4">
+            <div class="text-center">
                 <span id="auth-mode-badge" class="px-4 py-1 rounded-full text-sm font-bold bg-emerald-100 text-emerald-800">
                     貸出モード
                 </span>
-                <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-800 mt-2">本人確認</h2>
-                <p class="text-slate-500 text-sm mt-1">学籍番号または職員番号を入力してください</p>
+                <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-800 mt-1">本人確認</h2>
+                <p class="text-slate-500 text-xs sm:text-sm mt-0.5">学籍番号または職員番号を入力してください</p>
             </div>
 
-            <form onsubmit="handleAuthSubmit(event)" class="space-y-4">
-                <div>
-                    <label class="block text-xs font-bold text-slate-500 mb-1.5 text-center">番号入力欄</label>
-                    <div class="relative max-w-md mx-auto">
-                        <input type="text" id="user-id-input" placeholder="" required oninput="resetUserCard()"
-                            class="w-full text-center text-2xl sm:text-3xl tracking-widest font-mono p-3.5 border-2 border-slate-300 rounded-2xl focus:border-indigo-600 focus:outline-none uppercase font-bold shadow-inner">
-                        <button type="button" onclick="clearUserInput()" class="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 p-2">
-                            <i class="fa-solid fa-circle-xmark text-2xl"></i>
-                        </button>
+            <form onsubmit="handleAuthSubmit(event)" class="grid grid-cols-1 md:grid-cols-2 gap-6 items-start">
+                <!-- 左カラム: 入力欄 & テンキー -->
+                <div class="space-y-3">
+                    <div>
+                        <label class="block text-xs font-bold text-slate-500 mb-1 text-center">番号入力欄</label>
+                        <div class="relative max-w-md mx-auto">
+                            <input type="text" id="user-id-input" placeholder="" required oninput="resetUserCard()"
+                                class="w-full text-center text-2xl sm:text-3xl tracking-widest font-mono p-3 border-2 border-slate-300 rounded-2xl focus:border-indigo-600 focus:outline-none uppercase font-bold shadow-inner">
+                            <button type="button" onclick="clearUserInput()" class="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 p-2">
+                                <i class="fa-solid fa-circle-xmark text-2xl"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- 画面入力用テンキー -->
+                    <div class="bg-slate-50 p-3 rounded-2xl border border-slate-200 max-w-md mx-auto">
+                        <div class="grid grid-cols-3 gap-2">
+                            <button type="button" onclick="appendKey('1')" class="bg-white hover:bg-slate-100 active:bg-slate-200 text-slate-800 font-extrabold py-3 rounded-xl text-2xl shadow border border-slate-200 transition active:scale-95">1</button>
+                            <button type="button" onclick="appendKey('2')" class="bg-white hover:bg-slate-100 active:bg-slate-200 text-slate-800 font-extrabold py-3 rounded-xl text-2xl shadow border border-slate-200 transition active:scale-95">2</button>
+                            <button type="button" onclick="appendKey('3')" class="bg-white hover:bg-slate-100 active:bg-slate-200 text-slate-800 font-extrabold py-3 rounded-xl text-2xl shadow border border-slate-200 transition active:scale-95">3</button>
+
+                            <button type="button" onclick="appendKey('4')" class="bg-white hover:bg-slate-100 active:bg-slate-200 text-slate-800 font-extrabold py-3 rounded-xl text-2xl shadow border border-slate-200 transition active:scale-95">4</button>
+                            <button type="button" onclick="appendKey('5')" class="bg-white hover:bg-slate-100 active:bg-slate-200 text-slate-800 font-extrabold py-3 rounded-xl text-2xl shadow border border-slate-200 transition active:scale-95">5</button>
+                            <button type="button" onclick="appendKey('6')" class="bg-white hover:bg-slate-100 active:bg-slate-200 text-slate-800 font-extrabold py-3 rounded-xl text-2xl shadow border border-slate-200 transition active:scale-95">6</button>
+
+                            <button type="button" onclick="appendKey('7')" class="bg-white hover:bg-slate-100 active:bg-slate-200 text-slate-800 font-extrabold py-3 rounded-xl text-2xl shadow border border-slate-200 transition active:scale-95">7</button>
+                            <button type="button" onclick="appendKey('8')" class="bg-white hover:bg-slate-100 active:bg-slate-200 text-slate-800 font-extrabold py-3 rounded-xl text-2xl shadow border border-slate-200 transition active:scale-95">8</button>
+                            <button type="button" onclick="appendKey('9')" class="bg-white hover:bg-slate-100 active:bg-slate-200 text-slate-800 font-extrabold py-3 rounded-xl text-2xl shadow border border-slate-200 transition active:scale-95">9</button>
+
+                            <button type="button" onclick="appendKey('0')" class="col-span-2 bg-white hover:bg-slate-100 active:bg-slate-200 text-slate-800 font-extrabold py-3 rounded-xl text-2xl shadow border border-slate-200 transition active:scale-95">0</button>
+                            <button type="submit" class="col-span-1 bg-indigo-600 hover:bg-indigo-500 active:bg-indigo-700 text-white font-extrabold py-3 rounded-xl text-lg shadow transition active:scale-95 flex items-center justify-center">
+                                照会
+                            </button>
+                        </div>
                     </div>
                 </div>
 
-                <!-- 画面入力用テンキー -->
-                <div class="bg-slate-50 p-4 rounded-2xl border border-slate-200 max-w-md mx-auto">
-                    <div class="grid grid-cols-3 gap-2.5">
-                        <button type="button" onclick="appendKey('1')" class="bg-white hover:bg-slate-100 active:bg-slate-200 text-slate-800 font-extrabold py-3.5 rounded-xl text-2xl shadow border border-slate-200 transition active:scale-95">1</button>
-                        <button type="button" onclick="appendKey('2')" class="bg-white hover:bg-slate-100 active:bg-slate-200 text-slate-800 font-extrabold py-3.5 rounded-xl text-2xl shadow border border-slate-200 transition active:scale-95">2</button>
-                        <button type="button" onclick="appendKey('3')" class="bg-white hover:bg-slate-100 active:bg-slate-200 text-slate-800 font-extrabold py-3.5 rounded-xl text-2xl shadow border border-slate-200 transition active:scale-95">3</button>
+                <!-- 右カラム: 照会結果表示 & アクションボタン -->
+                <div class="flex flex-col justify-between h-full min-h-[300px] space-y-4">
+                    <div class="space-y-3 my-auto">
+                        <!-- 初期案内表示 -->
+                        <div id="user-initial-guide" class="bg-slate-50 border-2 border-dashed border-slate-200 rounded-2xl p-8 text-center text-slate-400 space-y-2">
+                            <i class="fa-solid fa-id-card text-5xl text-slate-300"></i>
+                            <p class="text-base font-bold">番号を入力して「照会」を押してください</p>
+                        </div>
 
-                        <button type="button" onclick="appendKey('4')" class="bg-white hover:bg-slate-100 active:bg-slate-200 text-slate-800 font-extrabold py-3.5 rounded-xl text-2xl shadow border border-slate-200 transition active:scale-95">4</button>
-                        <button type="button" onclick="appendKey('5')" class="bg-white hover:bg-slate-100 active:bg-slate-200 text-slate-800 font-extrabold py-3.5 rounded-xl text-2xl shadow border border-slate-200 transition active:scale-95">5</button>
-                        <button type="button" onclick="appendKey('6')" class="bg-white hover:bg-slate-100 active:bg-slate-200 text-slate-800 font-extrabold py-3.5 rounded-xl text-2xl shadow border border-slate-200 transition active:scale-95">6</button>
+                        <!-- 認証成功ユーザーカード -->
+                        <div id="user-info-card" class="hidden bg-indigo-50 border-2 border-indigo-300 rounded-2xl p-6 text-center space-y-2 shadow-sm">
+                            <p class="text-xs text-indigo-700 font-bold uppercase tracking-wider">確認されたユーザー</p>
+                            <p id="user-name-display" class="text-3xl sm:text-4xl font-black text-indigo-950"></p>
+                            <div id="user-role-display" class="text-base font-bold text-indigo-700"></div>
+                        </div>
 
-                        <button type="button" onclick="appendKey('7')" class="bg-white hover:bg-slate-100 active:bg-slate-200 text-slate-800 font-extrabold py-3.5 rounded-xl text-2xl shadow border border-slate-200 transition active:scale-95">7</button>
-                        <button type="button" onclick="appendKey('8')" class="bg-white hover:bg-slate-100 active:bg-slate-200 text-slate-800 font-extrabold py-3.5 rounded-xl text-2xl shadow border border-slate-200 transition active:scale-95">8</button>
-                        <button type="button" onclick="appendKey('9')" class="bg-white hover:bg-slate-100 active:bg-slate-200 text-slate-800 font-extrabold py-3.5 rounded-xl text-2xl shadow border border-slate-200 transition active:scale-95">9</button>
+                        <!-- 認証エラー表示 -->
+                        <div id="user-auth-error" class="hidden bg-rose-50 text-rose-600 p-5 rounded-2xl text-base text-center font-bold border border-rose-200 shadow-sm">
+                            <i class="fa-solid fa-triangle-exclamation text-2xl mb-1 block"></i>
+                            該当する番号が見つかりません。
+                        </div>
+                    </div>
 
-                        <button type="button" onclick="appendKey('0')" class="col-span-2 bg-white hover:bg-slate-100 active:bg-slate-200 text-slate-800 font-extrabold py-3.5 rounded-xl text-2xl shadow border border-slate-200 transition active:scale-95">0</button>
-                        <button type="submit" class="col-span-1 bg-indigo-600 hover:bg-indigo-500 active:bg-indigo-700 text-white font-extrabold py-3.5 rounded-xl text-lg shadow transition active:scale-95 flex items-center justify-center">
-                            照会
+                    <!-- 操作ボタン -->
+                    <div class="flex space-x-3 pt-2">
+                        <button type="button" onclick="goHome()" class="w-1/3 bg-slate-200 hover:bg-slate-300 text-slate-700 font-bold py-3.5 rounded-2xl text-base transition">
+                            戻る
+                        </button>
+                        <button type="submit" id="auth-check-btn" class="w-2/3 bg-indigo-600 hover:bg-indigo-500 text-white font-extrabold py-3.5 rounded-2xl text-base transition shadow-md">
+                            照会する
+                        </button>
+                        <button type="button" id="auth-next-btn" onclick="proceedToScan()" class="hidden w-2/3 bg-emerald-600 hover:bg-emerald-500 text-white font-extrabold py-3.5 rounded-2xl text-base transition shadow-md flex items-center justify-center space-x-2">
+                            <span>確認してスキャンへ進む</span>
+                            <i class="fa-solid fa-arrow-right text-sm"></i>
                         </button>
                     </div>
-                </div>
-
-                <div id="user-info-card" class="hidden bg-indigo-50 border-2 border-indigo-300 rounded-2xl p-4 text-center space-y-1 shadow-sm max-w-md mx-auto">
-                    <p class="text-xs text-indigo-700 font-bold uppercase tracking-wider">確認されたユーザー</p>
-                    <p id="user-name-display" class="text-2xl sm:text-3xl font-black text-indigo-950"></p>
-                    <div id="user-role-display" class="text-sm text-indigo-700 font-bold"></div>
-                </div>
-
-                <div id="user-auth-error" class="hidden bg-rose-50 text-rose-600 p-3 rounded-xl text-sm text-center font-bold border border-rose-200 max-w-md mx-auto">
-                    <i class="fa-solid fa-triangle-exclamation mr-1.5"></i> 該当する番号が見つかりません。
-                </div>
-
-                <div class="pt-2 flex space-x-3 max-w-md mx-auto">
-                    <button type="button" onclick="goHome()" class="w-1/3 bg-slate-200 hover:bg-slate-300 text-slate-700 font-bold py-3.5 rounded-2xl text-base transition">
-                        戻る
-                    </button>
-                    <button type="submit" id="auth-check-btn" class="w-2/3 bg-indigo-600 hover:bg-indigo-500 text-white font-extrabold py-3.5 rounded-2xl text-base transition shadow-md">
-                        照会する
-                    </button>
-                    <button type="button" id="auth-next-btn" onclick="proceedToScan()" class="hidden w-2/3 bg-emerald-600 hover:bg-emerald-500 text-white font-extrabold py-3.5 rounded-2xl text-base transition shadow-md flex items-center justify-center space-x-2">
-                        <span>確認してスキャンへ進む</span>
-                        <i class="fa-solid fa-arrow-right text-sm"></i>
-                    </button>
                 </div>
             </form>
         </div>
@@ -398,11 +416,13 @@
             currentUser = null;
             const infoCard = document.getElementById('user-info-card');
             const errorDiv = document.getElementById('user-auth-error');
+            const guideDiv = document.getElementById('user-initial-guide');
             const checkBtn = document.getElementById('auth-check-btn');
             const nextBtn = document.getElementById('auth-next-btn');
 
             if (infoCard) infoCard.classList.add('hidden');
             if (errorDiv) errorDiv.classList.add('hidden');
+            if (guideDiv) guideDiv.classList.remove('hidden');
             if (checkBtn) checkBtn.classList.remove('hidden');
             if (nextBtn) nextBtn.classList.add('hidden');
         }
@@ -417,6 +437,7 @@
 
             const errorDiv = document.getElementById('user-auth-error');
             const infoCard = document.getElementById('user-info-card');
+            const guideDiv = document.getElementById('user-initial-guide');
             const nameDisp = document.getElementById('user-name-display');
             const roleDisp = document.getElementById('user-role-display');
             const checkBtn = document.getElementById('auth-check-btn');
@@ -425,10 +446,12 @@
             if (!user) {
                 if (errorDiv) errorDiv.classList.remove('hidden');
                 if (infoCard) infoCard.classList.add('hidden');
+                if (guideDiv) guideDiv.classList.add('hidden');
                 return;
             }
 
             if (errorDiv) errorDiv.classList.add('hidden');
+            if (guideDiv) guideDiv.classList.add('hidden');
             currentUser = user;
 
             if (nameDisp) nameDisp.innerText = user.name;
